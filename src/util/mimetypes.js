@@ -11,6 +11,7 @@ export const ALLOWED_BLOB_MIMETYPES = [
   'video/webm',
   'video/ogg',
   'video/quicktime',
+  'video/x-matroska',
 
   'audio/mp4',
   'audio/webm',
@@ -30,7 +31,7 @@ export function getBlobSafeMimeType(mimetype) {
     return 'application/octet-stream';
   }
   // Required for Chromium browsers
-  if (mimetype === 'video/quicktime') {
+  if (mimetype === 'video/quicktime' || mimetype === 'video/x-matroska') {
     return 'video/mp4';
   }
   return mimetype;

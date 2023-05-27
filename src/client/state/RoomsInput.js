@@ -60,9 +60,9 @@ function loadVideo(videoFile) {
     reader.onerror = (e) => {
       reject(e);
     };
-    if (videoFile.type === 'video/quicktime') {
-      const quicktimeVideoFile = new File([videoFile], videoFile.name, { type: 'video/mp4' });
-      reader.readAsDataURL(quicktimeVideoFile);
+    if (videoFile.type === 'video/quicktime' || videoFile.type === 'video/x-matroska') {
+      const convertedVideoFile = new File([videoFile], videoFile.name, { type: 'video/mp4' });
+      reader.readAsDataURL(convertedVideoFile);
     } else {
       reader.readAsDataURL(videoFile);
     }
